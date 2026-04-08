@@ -34,10 +34,10 @@ export const metadata: Metadata = {
     siteName: 'Zarabi Dental Center',
     images: [
       {
-        url: '/images/48b881abff4e8cfc43bc65b33faa7b67.jpg', // Using a high-quality clinic image
+        url: 'https://zarabi-dental-clinic.vercel.app/images/doctor-art.png',
         width: 1200,
         height: 630,
-        alt: 'Zarabi Dental Center - Modern Luxury Clinic',
+        alt: 'Zarabi Dental Center - Signature Brand Image',
       },
     ],
     locale: 'fr_FR',
@@ -47,7 +47,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Zarabi Dental Center | Premium Cosmetic Dentistry',
     description: 'Transform your smile with the latest in cosmetic dentistry at Zarabi Dental Center.',
-    images: ['/images/48b881abff4e8cfc43bc65b33faa7b67.jpg'],
+    images: ['https://zarabi-dental-clinic.vercel.app/images/doctor-art.png'],
   },
   icons: {
     icon: '/icon.svg',
