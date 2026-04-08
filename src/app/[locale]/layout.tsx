@@ -23,7 +23,36 @@ const montserrat = Montserrat({
 
 export const metadata: Metadata = {
   title: 'Zarabi Dental Center | Premium Cosmetic Dentistry',
-  description: 'Experience transformative dentistry at Zarabi Dental Center. Where art meets dental science.',
+  description: 'Experience transformative dentistry at Zarabi Dental Center. Where art meets dental science. Specialized in veneers, implants, and total smile makeovers.',
+  keywords: ['dental clinic', 'cosmetic dentistry', 'veneers', 'smile makeover', 'Zarabi Dental', 'premium dentistry'],
+  authors: [{ name: 'Dr. A. Zarabi' }],
+  metadataBase: new URL('https://zarabi-dental-clinic.vercel.app'),
+  openGraph: {
+    title: 'Zarabi Dental Center | Premium Cosmetic Dentistry',
+    description: 'Experience transformative dentistry at Zarabi Dental Center. Where art meets dental science.',
+    url: 'https://zarabi-dental-clinic.vercel.app',
+    siteName: 'Zarabi Dental Center',
+    images: [
+      {
+        url: '/images/48b881abff4e8cfc43bc65b33faa7b67.jpg', // Using a high-quality clinic image
+        width: 1200,
+        height: 630,
+        alt: 'Zarabi Dental Center - Modern Luxury Clinic',
+      },
+    ],
+    locale: 'fr_FR',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Zarabi Dental Center | Premium Cosmetic Dentistry',
+    description: 'Transform your smile with the latest in cosmetic dentistry at Zarabi Dental Center.',
+    images: ['/images/48b881abff4e8cfc43bc65b33faa7b67.jpg'],
+  },
+  icons: {
+    icon: '/icon.svg',
+    apple: '/icon.svg',
+  },
 };
 
 export default async function RootLayout({
