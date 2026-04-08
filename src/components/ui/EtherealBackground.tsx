@@ -12,24 +12,32 @@ const ETHEREAL_IMAGES = [
   '/images/32ae17477ace40d8c7ef246eb788a836.jpg'
 ];
 
+function isTouchDevice() {
+  if (typeof window === 'undefined') return false;
+  return (
+    'ontouchstart' in window ||
+    navigator.maxTouchPoints > 0 ||
+    window.matchMedia('(pointer: coarse)').matches
+  );
+}
+
 export default function EtherealBackground() {
   const { resolvedTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
+  const [canRender, setCanRender] = useState(false);
 
   useEffect(() => {
     setMounted(true);
+    if (!isTouchDevice()) {
+      setCanRender(true);
+    }
   }, []);
 
-  if (!mounted) return null;
-
-  // We only show the intensely beautiful cosmic animation in dark mode.
+  if (!mounted || !canRender) return null;
   if (resolvedTheme !== 'dark') return null;
 
   return (
     <div className="fixed inset-0 z-0 pointer-events-none overflow-hidden mix-blend-screen opacity-80">
-      {/* Dynamic looping ethereal images */}
-      
-      {/* Particle/Cosmic Cluster 1 */}
       <motion.div
         className="absolute w-[120vw] h-[120vh] -top-[10%] -left-[10%] opacity-60"
         animate={{
@@ -40,13 +48,12 @@ export default function EtherealBackground() {
         transition={{
           duration: 40,
           repeat: Infinity,
-          ease: "linear"
+          ease: 'linear'
         }}
       >
         <Image src={ETHEREAL_IMAGES[0]} alt="Cosmic 1" fill className="object-cover mix-blend-screen" priority />
       </motion.div>
 
-      {/* Cosmic Structure 2 */}
       <motion.div
         className="absolute w-[120vw] h-[120vh] -bottom-[20%] -right-[10%] opacity-50"
         animate={{
@@ -57,13 +64,12 @@ export default function EtherealBackground() {
         transition={{
           duration: 50,
           repeat: Infinity,
-          ease: "easeInOut"
+          ease: 'easeInOut'
         }}
       >
         <Image src={ETHEREAL_IMAGES[1]} alt="Cosmic 2" fill className="object-cover mix-blend-screen opacity-70" />
       </motion.div>
 
-      {/* Nebula/Glow 3 */}
       <motion.div
         className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[150vw] h-[150vh] opacity-30 mix-blend-screen"
         animate={{
@@ -73,13 +79,12 @@ export default function EtherealBackground() {
         transition={{
           duration: 30,
           repeat: Infinity,
-          ease: "easeInOut"
+          ease: 'easeInOut'
         }}
       >
         <Image src={ETHEREAL_IMAGES[2]} alt="Cosmic 3" fill className="object-cover mix-blend-screen" />
       </motion.div>
-      
-      {/* Overlay gradient to ensure content remains highly readable */}
+
       <div className="absolute inset-0 bg-gradient-to-b from-[#080808]/80 via-transparent to-[#080808]/80 mix-blend-normal" />
       <div className="absolute inset-0 bg-[#080808]/50 mix-blend-normal" />
     </div>

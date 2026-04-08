@@ -1,11 +1,29 @@
 'use client';
 
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
+
+function isTouchDevice() {
+  if (typeof window === 'undefined') return false;
+  return (
+    'ontouchstart' in window ||
+    navigator.maxTouchPoints > 0 ||
+    window.matchMedia('(pointer: coarse)').matches
+  );
+}
 
 export default function GoldenSandBackground() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
+  const [shouldRender, setShouldRender] = useState(false);
 
   useEffect(() => {
+    if (!isTouchDevice()) {
+      setShouldRender(true);
+    }
+  }, []);
+
+  useEffect(() => {
+    if (!shouldRender) return;
+
     const canvas = canvasRef.current;
     if (!canvas) return;
 
@@ -16,10 +34,25 @@ export default function GoldenSandBackground() {
     let height = canvas.height = window.innerHeight;
 
     let particles: { x: number; y: number; s: number; vx: number; vy: number; baseVx: number; baseVy: number; life: number; maxLife: number; alpha: number }[] = [];
-    const particleCount = 100;
-    const maxDistance = 150;
+    const particleCount = 60;
+    const maxDistance = 120;
     
     let mouse = { x: -1000, y: -1000 };
+
+    function createParticle() {
+      return {
+        x: Math.random() * width,
+        y: Math.random() * height,
+        s: Math.random() * 1.6 + 0.4,
+        vx: (Math.random() - 0.5) * 0.45,
+        baseVx: (Math.random() - 0.5) * 0.45,
+        vy: (Math.random() - 1) * 0.7,
+        baseVy: (Math.random() - 1) * 0.7,
+        life: 0,
+        maxLife: Math.random() * 180 + 80,
+        alpha: Math.random() * 0.45 + 0.1,
+      };
+    }
 
     function initParticles() {
       particles = [];
@@ -28,59 +61,41 @@ export default function GoldenSandBackground() {
       }
     }
 
-    function createParticle() {
-      return {
-        x: Math.random() * width,
-        y: Math.random() * height,
-        s: Math.random() * 2 + 0.5,
-        vx: (Math.random() - 0.5) * 0.5,
-        baseVx: (Math.random() - 0.5) * 0.5,
-        vy: (Math.random() - 1) * 0.8,
-        baseVy: (Math.random() - 1) * 0.8,
-        life: 0,
-        maxLife: Math.random() * 200 + 100,
-        alpha: Math.random() * 0.5 + 0.1
-      };
-    }
-
     function drawParticles() {
-      ctx!.clearRect(0, 0, width, height);
+      if (!ctx) return;
+      ctx.clearRect(0, 0, width, height);
       for (let i = 0; i < particles.length; i++) {
-        let p = particles[i];
-        
-        ctx!.beginPath();
-        // Golden color for dust particle
-        ctx!.fillStyle = `rgba(202, 138, 4, ${p.alpha})`; 
-        ctx!.arc(p.x, p.y, p.s, 0, Math.PI * 2);
-        ctx!.fill();
-        
-        // Add dynamic glow
-        ctx!.shadowBlur = 10;
-        ctx!.shadowColor = "rgba(234, 179, 8, 0.8)";
-        
+        const p = particles[i];
+
+        ctx.beginPath();
+        ctx.fillStyle = `rgba(202, 138, 4, ${p.alpha})`;
+        ctx.arc(p.x, p.y, p.s, 0, Math.PI * 2);
+        ctx.fill();
+
+        ctx.shadowBlur = 8;
+        ctx.shadowColor = 'rgba(234, 179, 8, 0.75)';
+
         p.x += p.vx;
         p.y += p.vy;
-        p.life++;
+        p.life += 1;
 
-        // Mouse interaction logic
-        let dx = p.x - mouse.x;
-        let dy = p.y - mouse.y;
-        let dist = Math.sqrt(dx * dx + dy * dy);
+        const dx = p.x - mouse.x;
+        const dy = p.y - mouse.y;
+        const dist = Math.sqrt(dx * dx + dy * dy);
+
         if (dist < maxDistance) {
-          let force = (maxDistance - dist) / maxDistance;
-          p.vx += (dx / dist) * force * 0.05;
-          p.vy += (dy / dist) * force * 0.05;
-          p.alpha = Math.min(1, p.alpha + 0.05);
+          const force = (maxDistance - dist) / maxDistance;
+          p.vx += (dx / dist) * force * 0.045;
+          p.vy += (dy / dist) * force * 0.045;
+          p.alpha = Math.min(1, p.alpha + 0.04);
         } else {
-          // Return to base velocity slowly
           p.vx += (p.baseVx - p.vx) * 0.05;
           p.vy += (p.baseVy - p.vy) * 0.05;
           if (p.life > p.maxLife / 2) {
-            p.alpha -= 0.005; 
+            p.alpha -= 0.004;
           }
         }
 
-        // Reset particle if off-screen or faded
         if (p.y < -10 || p.alpha <= 0.01) {
           particles[i] = createParticle();
           particles[i].y = height + 10;
@@ -119,13 +134,17 @@ export default function GoldenSandBackground() {
       window.removeEventListener('mousemove', handleMouseMove);
       window.removeEventListener('mouseleave', handleMouseLeave);
     };
-  }, []);
+  }, [shouldRender]);
+
+  if (!shouldRender) {
+    return null;
+  }
 
   return (
-    <canvas 
-      ref={canvasRef} 
+    <canvas
+      ref={canvasRef}
       id="goldenSandCanvas"
-      className="fixed inset-0 w-screen h-screen pointer-events-none z-0 opacity-80 mix-blend-color-dodge"
+      className="fixed inset-0 w-screen h-screen pointer-events-none z-0 opacity-70 mix-blend-color-dodge"
     />
   );
 }
