@@ -1,0 +1,92 @@
+{
+  "Navbar": {
+    "Home": "Home",
+    "Services": "Services",
+    "Gallery": "Gallery",
+    "About": "About",
+    "Contact": "Contact",
+    "BookConsultation": "Book Consultation"
+  },
+  "HomePage": {
+    "Hero": {
+      "Subtitle": "Premium Cosmetic Dentistry",
+      "Title": "Your Most Radiant Smile Begins Here",
+      "Description": "At Zarabi Dental Center, we combine cutting-edge technology with an unwavering eye for aesthetics to craft smiles that are as healthy as they are beautiful.",
+      "BookBtn": "Book Free Consultation",
+      "ViewTransBtn": "View Transformations",
+      "FromPatients": "from 500+ patients",
+      "SmileTransformations": "Smile Transformations",
+      "TopRatedClinic": "Top-Rated Clinic",
+      "AwardsLocation": "Beverly Hills 2024"
+    },
+    "Services": {
+      "SectionSubtitle": "Our Expertise",
+      "SectionTitle": "Treatments Designed to Transform",
+      "LearnMore": "Learn More",
+      "Items": {
+        "veneers": {
+          "title": "Porcelain Veneers",
+          "desc": "Ultra-thin porcelain shells crafted to reshape, resurface, and reveal a flawless new smile."
+        },
+        "implants": {
+          "title": "Dental Implants",
+          "desc": "Permanent, natural-looking tooth replacement that preserves bone and restores full function."
+        },
+        "whitening": {
+          "title": "Teeth Whitening",
+          "desc": "Professional-grade whitening that delivers dramatic, lasting results in a single session."
+        },
+        "invisalign": {
+          "title": "Invisalign®",
+          "desc": "Discreet, removable clear aligners that straighten your teeth without wires or brackets."
+        },
+        "makeover": {
+          "title": "Smile Makeover",
+          "desc": "A curated combination of treatments designed to give you your most confident smile."
+        },
+        "general": {
+          "title": "Preventive Care",
+          "desc": "Comprehensive hygiene, digital X-rays, and proactive care that keeps your smile healthy for life."
+        }
+      }
+    },
+    "BeforeAfter": {
+      "SectionSubtitle": "Real Results",
+      "SectionTitle": "The Art of the Perfect Smile",
+      "Description": "Every smile is unique. Our before-and-after gallery showcases the life-changing transformations our patients experience at Zarabi Dental Center.",
+      "ViewFullGallery": "View Full Gallery"
+    },
+    "Doctor": {
+      "SectionSubtitle": "Meet the Doctor",
+      "SectionTitle": "A Vision for Beautiful, Healthy Smiles",
+      "Description1": "Dr. Zarabi is a board-certified cosmetic dentist with over 18 years of transforming smiles. Trained at leading institutions across North America and Europe, he blends surgical precision with an artist's eye to create results that are as natural as they are stunning.",
+      "Description2": "His philosophy is simple: every patient deserves a smile that reflects their best self. From a single veneer to a complete smile makeover, each treatment plan is meticulously crafted for the individual.",
+      "Stat1Label": "Years Experience",
+      "Stat2Label": "Smiles Crafted",
+      "Stat3Label": "Awards Won",
+      "FullBiography": "Full Biography",
+      "BoardCertified": "Board Certified",
+      "DrName": "Dr. A. Zarabi",
+      "DrSubtitle": "M.D.S · 18+ YRS EXP.",
+      "CircularText": "Dr. Zarabi • Aesthetic Master • "
+    },
+    "Testimonials": {
+      "SectionSubtitle": "Patient Stories",
+      "SectionTitle": "Words From Our Patients"
+    },
+    "CTA": {
+      "Subtitle": "Begin Your Journey",
+      "Title": "Your Dream Smile is One Appointment Away",
+      "Description": "Schedule your complimentary consultation and let Dr. Zarabi design a personalised treatment plan tailored exactly to you.",
+      "BookBtn": "Book Free Consultation",
+      "CallBtn": "Call Us: +1 234 567 890"
+    }
+  },
+  "Footer": {
+    "Description": "Premium cosmetic and restorative dentistry. Where meticulous art meets advanced dental science to create your most confident smile.",
+    "QuickLinks": "Quick Links",
+    "Services": "Services",
+    "Contact": "Contact",
+    "Rights": "Zarabi Dental Center. All rights reserved."
+  }
+}

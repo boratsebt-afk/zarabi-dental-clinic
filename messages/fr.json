@@ -1,0 +1,92 @@
+{
+  "Navbar": {
+    "Home": "Accueil",
+    "Services": "Services",
+    "Gallery": "Galerie",
+    "About": "À propos",
+    "Contact": "Contact",
+    "BookConsultation": "Prendre RDV"
+  },
+  "HomePage": {
+    "Hero": {
+      "Subtitle": "Dentisterie Esthétique Premium",
+      "Title": "Votre Plus Beau Sourire Commence Ici",
+      "Description": "Au Centre Dentaire Zarabi, nous combinons des technologies de pointe avec un sens inégalé de l'esthétique pour créer des sourires aussi sains que magnifiques.",
+      "BookBtn": "Réserver une Consultation Gratuite",
+      "ViewTransBtn": "Voir les Transformations",
+      "FromPatients": "de plus de 500 patients",
+      "SmileTransformations": "Sourires Transformés",
+      "TopRatedClinic": "Clinique Mieux Notée",
+      "AwardsLocation": "Beverly Hills 2024"
+    },
+    "Services": {
+      "SectionSubtitle": "Notre Expertise",
+      "SectionTitle": "Des Traitements Conçus Pour Transformer",
+      "LearnMore": "En Savoir Plus",
+      "Items": {
+        "veneers": {
+          "title": "Facettes en Porcelaine",
+          "desc": "Des coques en porcelaine ultra-fines conçues pour remodeler et révéler un nouveau sourire parfait."
+        },
+        "implants": {
+          "title": "Implants Dentaires",
+          "desc": "Un remplacement dentaire permanent et naturel qui préserve l'os et restaure la fonction complète."
+        },
+        "whitening": {
+          "title": "Blanchiment Dentaire",
+          "desc": "Un blanchiment professionnel qui offre des résultats spectaculaires et durables en une seule séance."
+        },
+        "invisalign": {
+          "title": "Invisalign®",
+          "desc": "Des gouttières transparentes et amovibles qui alignent vos dents sans fils ni bagues."
+        },
+        "makeover": {
+          "title": "Relooking Complet",
+          "desc": "Une combinaison sur-mesure de traitements conçus pour vous donner votre sourire le plus confiant."
+        },
+        "general": {
+          "title": "Soins Préventifs",
+          "desc": "Une hygiène complète, des radiographies numériques et des soins proactifs qui gardent votre sourire en bonne santé pour la vie."
+        }
+      }
+    },
+    "BeforeAfter": {
+      "SectionSubtitle": "Vrais Résultats",
+      "SectionTitle": "L'Art du Sourire Parfait",
+      "Description": "Chaque sourire est unique. Notre galerie avant/après présente les transformations qui changent la vie de nos patients au Centre Dentaire Zarabi.",
+      "ViewFullGallery": "Voir Toute la Galerie"
+    },
+    "Doctor": {
+      "SectionSubtitle": "Rencontrez le Docteur",
+      "SectionTitle": "Une Vision pour des Sourires Beaux et Sains",
+      "Description1": "Le Dr Zarabi est un dentiste cosmétique certifié avec plus de 18 ans d'expérience dans la transformation des sourires. Formé dans des institutions de premier plan en Amérique du Nord et en Europe, il allie précision chirurgicale et œil d'artiste pour créer des résultats aussi naturels que spectaculaires.",
+      "Description2": "Sa philosophie est simple : chaque patient mérite un sourire qui reflète sa meilleure version. De la simple facette au relooking complet, chaque plan de traitement est méticuleusement conçu pour chaque individu.",
+      "Stat1Label": "Années d'Exp.",
+      "Stat2Label": "Sourires Créés",
+      "Stat3Label": "Prix Remportés",
+      "FullBiography": "Biographie Complète",
+      "BoardCertified": "Certifié",
+      "DrName": "Dr A. Zarabi",
+      "DrSubtitle": "M.D.S · 18+ ANS D'EXP.",
+      "CircularText": "Dr Zarabi • Maître en Esthétique • "
+    },
+    "Testimonials": {
+      "SectionSubtitle": "Histoires de Patients",
+      "SectionTitle": "Les Mots de nos Patients"
+    },
+    "CTA": {
+      "Subtitle": "Commencez Votre Voyage",
+      "Title": "Votre Sourire de Rêve est à un Rendez-vous d'Ici",
+      "Description": "Planifiez votre consultation gratuite et laissez le Dr Zarabi concevoir un plan de traitement personnalisé spécialement pour vous.",
+      "BookBtn": "Réserver une Consultation Gratuite",
+      "CallBtn": "Appelez-nous : +1 234 567 890"
+    }
+  },
+  "Footer": {
+    "Description": "Dentisterie esthétique et réparatrice haut de gamme. Où l'art minutieux rencontre la science dentaire avancée pour créer votre sourire le plus confiant.",
+    "QuickLinks": "Liens rapides",
+    "Services": "Services",
+    "Contact": "Contact",
+    "Rights": "Centre Dentaire Zarabi. Tous droits réservés."
+  }
+}
