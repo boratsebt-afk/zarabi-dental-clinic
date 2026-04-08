@@ -1,43 +1,45 @@
 'use client';
 
-import { useEffect, useState } from 'react';
-import { ReactLenis } from 'lenis/react';
+import { useEffect } from 'react';
+import Lenis from 'lenis';
 
 function isTouchDevice() {
   if (typeof window === 'undefined') return false;
   return (
     'ontouchstart' in window ||
     navigator.maxTouchPoints > 0 ||
-    window.matchMedia('(any-pointer: coarse)').matches ||
     window.matchMedia('(pointer: coarse)').matches ||
     window.matchMedia('(hover: none)').matches
   );
 }
 
 export default function SmoothScroll({ children }: { children: React.ReactNode }) {
-  const [useSmoothScroll, setUseSmoothScroll] = useState(false);
-  const [mounted, setMounted] = useState(false);
-
   useEffect(() => {
-    setMounted(true);
-    setUseSmoothScroll(!isTouchDevice());
+    if (isTouchDevice()) return undefined;
+
+    const lenis = new Lenis({
+      duration: 1.2,
+      easing: (t: number) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+      orientation: 'vertical',
+      gestureOrientation: 'vertical',
+      smoothWheel: true,
+      wheelMultiplier: 0.9,
+      infinite: false,
+      autoRaf: false,
+    });
+
+    const raf = (time: number) => {
+      lenis.raf(time);
+      requestAnimationFrame(raf);
+    };
+
+    const frame = requestAnimationFrame(raf);
+
+    return () => {
+      cancelAnimationFrame(frame);
+      lenis.destroy();
+    };
   }, []);
 
-  if (!mounted || !useSmoothScroll) {
-    return <>{children}</>;
-  }
-
-  return (
-    <ReactLenis
-      root
-      options={{
-        lerp: 0.1,
-        duration: 1.2,
-        smoothWheel: true,
-        wheelMultiplier: 1.1,
-      }}
-    >
-      {children}
-    </ReactLenis>
-  );
+  return <>{children}</>;
 }

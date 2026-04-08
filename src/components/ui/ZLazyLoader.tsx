@@ -1,7 +1,7 @@
 'use client';
 
 import { motion, AnimatePresence } from 'framer-motion';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 
 interface ZLazyLoaderProps {
   onAnimationComplete: () => void;
@@ -12,18 +12,13 @@ export default function ZLazyLoader({ onAnimationComplete, onZoomStart }: ZLazyL
   const [drawDone, setDrawDone] = useState(false);
   const [zoomDone, setZoomDone] = useState(false);
 
-  // Prevent scroll during loader
-  useEffect(() => {
-    document.body.style.overflow = 'hidden';
-    return () => { document.body.style.overflow = ''; };
-  }, []);
-
   return (
     <AnimatePresence>
       {!zoomDone && (
         <motion.div
           key="loader"
           className="fixed inset-0 z-[9999] flex items-center justify-center bg-[var(--background)]"
+          style={{ pointerEvents: drawDone ? 'none' : 'auto' }}
           // Fade out the backdrop just after the zoom fires
           animate={drawDone ? { opacity: 0 } : { opacity: 1 }}
           transition={{ duration: 0.85, delay: 0.15 }}

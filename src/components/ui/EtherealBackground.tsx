@@ -17,24 +17,40 @@ function isTouchDevice() {
   return (
     'ontouchstart' in window ||
     navigator.maxTouchPoints > 0 ||
-    window.matchMedia('(pointer: coarse)').matches
+    window.matchMedia('(any-pointer: coarse)').matches ||
+    window.matchMedia('(pointer: coarse)').matches ||
+    window.matchMedia('(hover: none)').matches
   );
 }
 
 export default function EtherealBackground() {
   const { resolvedTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
-  const [canRender, setCanRender] = useState(false);
+  const [isTouch, setIsTouch] = useState(false);
 
   useEffect(() => {
     setMounted(true);
-    if (!isTouchDevice()) {
-      setCanRender(true);
-    }
+    setIsTouch(isTouchDevice());
   }, []);
 
-  if (!mounted || !canRender) return null;
+  if (!mounted) return null;
   if (resolvedTheme !== 'dark') return null;
+
+  if (isTouch) {
+    return (
+      <div className="fixed inset-0 z-0 pointer-events-none overflow-hidden mix-blend-screen opacity-80">
+        <Image
+          src={ETHEREAL_IMAGES[0]}
+          alt="Ethereal background"
+          fill
+          className="object-cover mix-blend-screen filter brightness-90 contrast-110"
+          priority
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-[#080808]/85 via-transparent to-[#080808]/85 mix-blend-normal" />
+        <div className="absolute inset-0 bg-[#080808]/50 mix-blend-normal" />
+      </div>
+    );
+  }
 
   return (
     <div className="fixed inset-0 z-0 pointer-events-none overflow-hidden mix-blend-screen opacity-80">

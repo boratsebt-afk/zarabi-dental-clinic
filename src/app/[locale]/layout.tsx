@@ -73,7 +73,7 @@ export default async function RootLayout({
             <SmoothScroll>
               <EtherealBackground />
               <Navbar />
-              <main className="flex-grow pt-24 relative w-full overflow-visible md:overflow-hidden min-h-screen">
+              <main className="flex-grow pt-24 relative w-full min-h-screen">
                 {children}
               </main>
               <Footer />
